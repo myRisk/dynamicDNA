@@ -37,3 +37,4 @@ Copyright 2014 Iron Summit Media Strategies, LLC. Code released under the [Apach
 ## Credits
 * Source code for the Gail Model used can be found at [National Cancer Institute](http://www.cancer.gov/bcrisktool/Default.aspx)
 * Speedometer and timeline diagrams were generated through [AMCHARTS](http://www.amcharts.com/javascript-maps/)
+* Home page world map data from [GLOBOCAN 2012: Estimated Cancer Incidence, Mortality and Prevalence Worldwide in 2012](http://globocan.iarc.fr/Default.aspx)
