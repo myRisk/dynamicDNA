@@ -99,29 +99,6 @@ DATABASES = {
     }
 }
 
-"""DATABASES = {
-    'default': { 
-        'ENGINE': 'django.db.backends.mysql',  
-        'NAME': os.path.join(BASE_DIR, 'nameoffile'),                                       
-        'USER': 'root',
-        'PASSWORD': 'myPassword',
-        'HOST': 'localhost',
-        'PORT': '3306', 
-
-    }
-}"""
-
-"""DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mydatabase',
-        'USER': 'mydatabaseuser',
-        'PASSWORD': 'mypassword',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}"""
-
 # added hashing for secure login 
 PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
