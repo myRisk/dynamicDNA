@@ -132,8 +132,3 @@ STATIC_PATH = os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS = (
     STATIC_PATH,
 )
-
-#STATICFILES_DIRS = (
-    #'/Users/nasim/Documents/webDesign/dynamicDNA/static',
-    #STATIC_PATH,
-#)
