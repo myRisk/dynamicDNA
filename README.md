@@ -19,7 +19,7 @@ myRisk is a risk assessment tool that provides interactive risk visuals to enhan
 To use this program, it must be hosted on a Windows server (to run C# executable code).
 * Make sure you have installed all dependencies above
 * git clone https://github.com/myRisk/dynamicDNA
-* Change lines 71-75 in dynamicDNA/settings.py to match your working directory
+* Change lines 71-75 in dynamicDNA/settings.py to match your template directory
 * In your working directory, enter the following code to run a local server:
 ```shell
 python manage.py runserver
