@@ -4,14 +4,14 @@
 myRisk is a risk assessment tool that provides interactive risk visuals to enhance patient comprehension of risk to prepare patients with the knowledge needed to make informed clinical and lifestyle decisions.
 
 ## Dependencies 
-*Python version v2.7.9
-*pip v6.1.1
-*Django v1.8  
-*node v0.12.2
-*grunt-cli v0.1.13
-*pillow v2.8.1
-*pip install psycopg2  v2.2.6
-*npm install bootstrap
+* Python version v2.7.9
+* pip v6.1.1
+* Django v1.8  
+* node v0.12.2
+* grunt-cli v0.1.13
+* pillow v2.8.1
+* pip install psycopg2  v2.2.6
+* npm install bootstrap
 
 ## Getting Started
 
