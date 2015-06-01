@@ -1,0 +1,196 @@
+
+
+<!DOCTYPE html>
+{% load staticfiles %} <!-- New line -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <!--  dashboard --> 
+        <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+        <title>myRisk</title>
+    
+        <style type="text/css">
+            div.bar {
+                display: inline-block;
+                width: 20px;
+                height: 75px;   /* We'll override this later */
+                background-color: teal;
+                margin-right: 2px;
+            }
+            body {
+                background-color: #E5E5E5;
+            }
+            .page-header{
+
+            }
+            .population_risk {
+              padding: 40px 50px;
+              text-align: center;
+            }
+            .your_risk {
+              padding: 40px 15px;
+              text-align: center;
+            }
+            table#t1 {
+                margin: 0 auto;
+                width: 70%;    
+                background-color: #fafefe;
+            }
+            .btn-circle {
+              width: 30px;
+              height: 30px;
+              padding: 8px 0;
+              font-size: 13px;
+              line-height: 1.428571429;
+              border-radius: 15px;
+              margin-top: 10px;
+           }
+           .mail {
+            margin-right: 10px
+           }
+           .print {
+            margin-right: 0px
+           }
+       </style>
+    </head>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+      ================================================== --> 
+       <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/vizDNA/">myRisk </a> 
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/vizDNA/">Home</a></li> 
+                <li><a href="/vizDNA/about">About</a></li>
+                <li><a href="/vizDNA/contact">Contact</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/vizDNA/risk">Restart Your Risk Assessment</a></li>
+                <li><a href="/vizDNA/viz2" onClick="window.print();return false" class="print"><img src="{% static "images/print-icon.png" %}" ></a><li>
+                <li><a href="mailto:email@echoecho.com?subject=SweetWords&body=Copy of my risk management counseling!" class="mail"><img src="{% static "images/emailIcon.png" %}" ></a></li>
+                <li><button type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-heart"></i></button></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+
+   
+     <div>
+          <a class="right carousel-control" href="/vizDNA/viz2" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          
+     </div>
+
+
+     <div class="col-m-8">
+     <!--class="{% cycle 'row1' rowvalue2 'row3' %}"-->
+     <div class="population_risk">
+         <h1 text-align="center"><strong>Lifetime Risk until age 90</strong></h1>
+      <table id="t1">
+        <tr>
+         <td>
+         <br>
+         <h4> <b>Population Risk </b></h4>
+            <script> 
+              function genRisk(p) {
+
+                  var row = 0;
+                  var total = 0;
+                  var risk = p; 
+                  var no = '<img src="{% static "images/no3.jpg" %}" width="{{ image.width }}" height="{{ image.height }}"/>'
+                  var yes = '<img src="{% static "images/yes3.jpg" %}" width="{{ image.width }}" height="{{ image.height }}"/>'
+
+                  for (var i = 0; i <= 9; i++){
+                    document.write("<br>");
+                    row = row  + 1; 
+                    for (var j = 0; j <= 9; j++){
+                      if(total < risk){
+                        document.write(yes);
+                      }else{
+                        document.write(no);
+                      }
+                      total = total + 1;
+                    }
+                  }
+                }
+                genRisk({{ pop90 }});
+            </script>
+         </br></br>
+         <p><b>{{ pop90 }} out of 100</b> women with your age and race</br> are estimated to develop breast cancer <br>in their lifetime (90 yrs old)</p>
+         </td>
+         <td>
+         <br>
+         <h4> <b>Your Risk </b></h4>
+          <script type="text/javascript">
+            function yourRisk(y) {
+
+                var row = 0;
+                var total = 0;
+                var risk = y; 
+                var no = '<img src="{% static "images/no3.jpg" %}" width="{{ image.width }}" height="{{ image.height }}"/>'
+                var yes = '<img src="{% static "images/yes3.jpg" %}" width="{{ image.width }}" height="{{ image.height }}"/>'
+
+                for (var i = 0; i <= 9; i++){
+                  document.write("<br>");
+                  row = row  + 1; 
+                  for (var j = 0; j <= 9; j++){
+                    if(total < risk){
+                        document.write(yes);
+                      }else{
+                        document.write(no);
+                      }
+                      total = total + 1;
+                    }
+                  }
+            }
+            yourRisk({{ you90 }});
+          </script>
+         </br></br>
+         <p><b>{{ you90 }} out of 100 </b>is your chance</br> of developing breast cancer </br> in your lifetime (until 90 yrs old)</p>
+         </td>
+        </tr>
+      </table>
+     </div>
+    </div>
+      
+
+     
+
+     <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- d3 JavaScript library-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        
+    </body>
+</html>
+
+
+

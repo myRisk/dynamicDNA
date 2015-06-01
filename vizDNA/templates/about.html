@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <!--  dashboard --> 
+        <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+        <title>myRisk</title>
+    
+        <style type="text/css">
+            div.bar {
+                display: inline-block;
+                width: 20px;
+                height: 75px;   /* We'll override this later */
+                background-color: teal;
+                margin-right: 2px;
+            }
+            body {
+                background-color: #E5E5E5;
+            }
+            .page-header{
+
+            }
+       </style>
+    </head>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+      <!-- Navbar
+      ================================================== -->
+       <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/vizDNA/">myRisk </a> 
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/vizDNA/">Home</a></li>
+                <li><a href="/vizDNA/about">About</a></li>
+                <li><a href="/vizDNA/contact">Contact</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/vizDNA/risk">Start Your Risk Assessment</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+     
+
+        <!-- Page header 
+         ================================================== -->
+          <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2 main">
+              <div class="page-header">
+                  <h1>myRisk</h1>
+              </div>
+
+              <div class="row">
+                  <div class="col-xs-16 col-md-10" style="margin-top: 10px;">
+                      <div class="thumbnail">
+                          <img src="/static/images/constantChange2.jpg" alt=""/>
+                      </div>
+                  </div>
+              </div>
+
+              <h3>It is important to note that characteristics
+              of a particular woman can make her cancer risk go higher or
+              lower than the average risk. These characteristics include
+              her family history of breast, ovarian, and, possibly, other
+              cancers; the specific mutation(s) she has inherited; and
+              other risk factors, such as her reproductive history.
+              However, at this time, based on current data, none of
+              these other factors seems to be as strong as the effect of
+              carrying BRCA1 or BRCA2 mutation.
+              </h3>
+              <!--<img src="/static/images/angie.jpg" alt="" />-->
+
+              <br>
+              <h3>Breast Cancer Resources: </h3>
+
+              <!-- Content Row -->
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="panel-group" id="accordion">
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Where to go for more information on Breast Cancer:</a>
+                                  </h4>
+                              </div>
+                              <div id="collapseOne" class="panel-collapse collapse">
+                                  <div class="panel-body">
+                                      <a href="http://www.nlm.nih.gov/medlineplus/breastcancer.html">National Institutes of Health</a>
+                                      <br>
+                                      <a href="http://www.nationalbreastcancer.org/about-breast-cancer">National Breast Cancer Foundation</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- /.panel -->
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">For more information about risk factors for Breast Cancer:</a>
+                                  </h4>
+                              </div>
+                              <div id="collapseTwo" class="panel-collapse collapse">
+                                  <div class="panel-body">
+                                      <a href="http://ww5.komen.org/BreastCancer/BreastCancerRiskFactorsTable.html">Susan G Komen Organization</a>
+                                      <br>
+                                      <a href="http://www.breastcancer.org/risk/factors">BreastCancer.org</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- /.panel -->
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Where to go if you have been diagnosed with Breast Cancer:</a>
+                                  </h4>
+                              </div>
+                              <div id="collapseThree" class="panel-collapse collapse">
+                                  <div class="panel-body">
+                                      <a href="http://www.cancercenter.com/breast-cancer/">Cancer Treatment Centers of America</a>
+                                      <br>
+                                      <a href="http://www.cancer.org/treatment/index">American Cancer Society</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- /.panel -->
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Where to go to find a Breast Cancer support group:</a>
+                                  </h4>
+                              </div>
+                              <div id="collapseFour" class="panel-collapse collapse">
+                                  <div class="panel-body">
+                                      <a href="http://ww5.komen.org/BreastCancer/SupportIntroduction.html">Susan G Komen Organization</a>
+                                      <br>
+                                      <a href="http://bcsupport.org/">Breast Cancer Support</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- /.panel-group -->
+                  </div>
+                  <!-- /.col-lg-12 -->
+              </div>
+              <!-- /.row -->
+
+              <br>
+              <br>
+              <br>
+              <h4>Source code for risk assessment tool can be found at the <a href="http://www.cancer.gov/bcrisktool/download-source-code.aspx">National Cancer Institute</a></h4>
+          </div>
+ 
+        
+        <!--<button type="button" onclick="alert('Hello world!')">Click Me!</button>-->
+        <!-- Visual content from d3js.org 
+        ================================================== --> 
+        <!--<svg width="225", height="200"></svg>
+        <script type="text/javascript" >
+            // Your beautiful D3 code will go here
+           var margin = {right: 100, left: 100}
+           var dataset = [];                        //Initialize empty array
+           for (var i = 0; i < 25; i++) {           //Loop 25 times
+               var newNumber = Math.random() * 30;  //New random number (0-30)
+               dataset.push(newNumber);             //Add new number to array
+           }
+
+            d3.select("body").selectAll("div")
+            .data(dataset)
+            .enter()
+            .append("div")
+            .attr("class", "bar")
+            .attr("x", 900)           // set x position of left side of text
+            .attr("y", 900)           // set y position of bottom of text 
+            .attr("dx", "100px")       // set offset x position
+            .attr("dy", "1000px")      // set offset y position
+            .style("height", function(d) {
+                  var barHeight = d * 5;  //Scale up by factor of 5
+                  return barHeight + "px";
+            });
+        </script>-->
+     <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- d3 JavaScript library-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        
+    </body>
+</html>
+
+
+

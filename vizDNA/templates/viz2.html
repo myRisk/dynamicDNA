@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+{% load staticfiles %} <!-- New line -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <!--  dashboard --> 
+        <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+        <title>myRisk</title>
+    
+        <style type="text/css">
+            div.bar {
+                display: inline-block;
+                width: 20px;
+                height: 75px;   /* We'll override this later */
+                background-color: teal;
+                margin-right: 2px;
+            }
+            body {
+                background-color: #E5E5E5;
+            }
+            .page-header{
+
+            }
+            .population_risk {
+              padding: 40px 50px;
+              text-align: center;
+            }
+            .your_risk {
+              padding: 40px 15px;
+              text-align: center;
+            }
+            table#t1 {
+                margin: 0 auto;
+                width: 70%;    
+                background-color: #53c1b9;
+            }
+            #chartdiv {
+              margin: 0 auto;
+              width : 80%;
+              height  : 600px;
+              background-color: #FFFFFF;
+            } 
+            .btn-circle {
+              width: 30px;
+              height: 30px;
+              padding: 8px 0;
+              font-size: 13px;
+              line-height: 1.428571429;
+              border-radius: 15px;
+              margin-top: 10px;
+           }
+           .mail {
+            margin-right: 10px
+           }
+           .print {
+            margin-right: 0px
+           }                                                
+       </style>
+    </head>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+      <!-- Navbar
+      ================================================== --> 
+       <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/vizDNA/">myRisk </a> 
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/vizDNA/">Home</a></li> 
+                <li><a href="/vizDNA/about">About</a></li>
+                <li><a href="/vizDNA/contact">Contact</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/vizDNA/risk">Restart Your Risk Assessment</a></li>
+                <li><a href="/vizDNA/viz2" onClick="window.print();return false" class="print"><img src="{% static "images/print-icon.png" %}" ></a><li>
+                <li><a href="mailto:email@echoecho.com?subject=SweetWords&body=Copy of my risk management counseling!" class="mail"><img src="{% static "images/emailIcon.png" %}" ></a></li>
+                <li><button type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-heart"></i></button></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+
+     <script src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+     <script src="http://www.amcharts.com/lib/3/serial.js"></script>
+     <script src="http://www.amcharts.com/lib/3/themes/light.js"></script>
+     <div id="chartdiv">
+     <!-- Visual content from d3js.org 
+        ================================================== -->
+       <script>
+          var chartData = generateChartData({{you}}, {{pop}}, {{you90}}, {{pop90}}, {{age}});
+          var chart = AmCharts.makeChart("chartdiv", {
+              "type": "serial",
+              "theme": "light",
+              "marginRight": 70,
+              "autoMarginOffset": 20,
+              "path": "http://www.amcharts.com/lib/3/",
+              "legend": {
+                "useGraphSettings": true
+              },
+              "dataProvider": chartData,
+              "valueAxes": [{
+                  "id":"v1",
+                  "axisColor": "#000000",
+                  "axisThickness": 2,
+                  "gridAlpha": 0,
+                  "axisAlpha": 1,
+                  "offset": 50,
+                  "position": "left",
+                  "title": "Estimated Risk Percentage"
+              }],
+              "graphs": [{
+                  "valueAxis": "v1",
+                  "lineColor": "#2442FF",
+                  "bullet": "round",
+                  "bulletBorderThickness": 1,
+                  "hideBulletsCount": 30,
+                  "title": "your estimated risk",
+                  "valueField": "you",
+                  "balloonText": "[[category]] year of age<br><b><span style='font-size:14px;'>[[value]] Your Estimated Risk</span></b>",
+              "fillAlphas": 0
+              }, {
+                  "valueAxis": "v2",
+                  "lineColor": "#E09E23",
+                  "bullet": "square",
+                  "bulletBorderThickness": 1,
+                  "hideBulletsCount": 30,
+                  "title": "population estimated risk",
+                  "valueField": "pop",
+                  "balloonText": "[[category]] year of age<br><b><span style='font-size:14px;'>[[value]] Population Estimated Risk</span></b>",
+
+              "fillAlphas": 0
+              }],
+              "chartScrollbar": {},
+              "chartCursor": {
+                  "cursorPosition": "mouse"
+              },
+              "categoryField": "year",
+              "categoryAxis": {
+                  "parseDates": true,
+                  "axisColor": "#DADADA",
+                  "minorGridEnabled": true
+              },
+              "export": {
+                "enabled": true,
+                  "position": "bottom-right"
+               }
+          });
+          
+          // generate some random data, quite different range
+          function generateChartData(you, pop, y, p, a) {
+              var chartData = [];
+              var date = new Date();
+
+              /*for (var i = 0; i < 50; i++) {
+                  // we create date objects here. In your data, you can have date strings
+                  // and then set format of your dates using chart.dataDateFormat property,
+                  // however when possible, use date objects, as this will speed up chart rendering.
+                  var newDate = new Date(date);
+                  newDate.setDate(newDate.getFullYear() + i - 50);
+
+                  var yourRisk = i + 5 + y;
+                  var popRisk = i + 10 + p;
+
+                  chartData.push({
+                      year: newDate,
+                      you: yourRisk,
+                      pop: popRisk
+                  });
+              }*/
+              var newDate1 = new Date(date);
+              //newDate1.setDate((newDate1.getFullYear() ));
+              newDate1.setFullYear(newDate1.getFullYear() + 5)
+              //var theAge = a;
+              chartData.push({
+                  year: newDate1,
+                  you: you,
+                  pop: pop
+              });
+              //newDate.setDate(Math.abs(newDate.getFullYear() -  a) + 90);
+              theAge = Math.abs(90 - a);
+              var newDate2 = new Date(date);
+              //newDate2.setDate((newDate2.getFullYear() + 20));
+              newDate2.setFullYear(newDate2.getFullYear() + theAge)
+              chartData.push({
+                  year: newDate2,
+                  you: y,
+                  pop: p
+              });
+              return chartData;
+          }
+          chart.addListener("dataUpdated", zoomChart);
+
+          function zoomChart(){
+              chart.zoomToDates(new Date(2015, 0), new Date(2080, 0));
+          }
+
+       </script>
+     </div>
+
+      <div class="col-sm-offset-1">
+          <br>
+          <h4><b>Explanation:</b></h4>
+          <h4>Based on the information provided, your estimated risk for developing invasive breast cancer over your lifetime is {{you90}}% compared to a risk of {{pop90}}% for a woman of the same age and race </h4>
+
+      </div>
+
+     <div>
+          <a class="right carousel-control" href="/vizDNA/feedback" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          
+     </div>
+
+
+     <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- d3 JavaScript library-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        
+    </body>
+</html>
+
+
+

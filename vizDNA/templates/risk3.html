@@ -1,0 +1,127 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <!--  dashboard --> 
+        <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+        <title>myRisk</title>
+
+        <style type="text/css">
+            div.bar {
+                display: inline-block;
+                width: 20px;
+                height: 75px;   /* We'll override this later */
+                background-color: teal;
+                margin-right: 2px;
+            }
+            body {
+                background-color: #E5E5E5;
+                padding-top: 50px;
+            }
+            .starter-template {
+              padding: 40px 15px;
+              text-align: center;
+            }
+
+            .btn-circle.btn-xl {
+              width: 70px;
+              height: 70px;
+              padding: 10px 16px;
+              font-size: 24px;
+              line-height: 1.33;
+              border-radius: 35px;
+            }
+
+            .roundbutton {
+              margin: 70px;
+            }
+
+       </style>
+    </head>
+    <body>
+
+    <!-- Navbar
+      ================================================== --> 
+       <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/vizDNA/">myRisk </a> 
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/vizDNA/">Home</a></li>
+                <li><a href="/vizDNA/about">About</a></li>
+                <li><a href="/vizDNA/contact">Contact</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/vizDNA/risk">Restart Your Risk Assessment</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+
+      <div class="container">
+        <div class="progress" >
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                aria-valuemin="0" aria-valuemax="100" style="width:29%">
+                29% Complete
+              </div>
+         </div>
+
+          <div class="starter-template">
+              <h1>3) At what age did you have your first living child?</h1>
+              <br>
+              <br>
+              <br>
+              <form action="/vizDNA/risk4/" method="post">
+                {% csrf_token %}
+                <div class="alert alert-info col-sm-offset-4 col-sm-4">
+                    <select class="form-control input-lg col-sm-6 " name="firstLiveBirthAge" id="firstLiveBirthAge" class="required">
+                        <option type="submit" name="risk3" value="">First Birth Age</option>
+                        <option type="submit" name="risk3" value="15">Younger</option>
+                        <option type="submit" name="risk3" value="22">20 - 24</option>
+                        <option type="submit" name="risk3" value="27">25 - 30</option>
+                        <option type="submit" name="risk3" value="31">Older</option>
+                        <optgroup label="">
+                            <option type="submit" name="risk3" value="99">Unknown</option>
+                            <option type="submit" name="risk3" value="0">No Children</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <button type="submit" name="risk3" class="btn btn-lg btn-default btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>Next</button>
+            </form>
+          </div>
+
+      </div>
+
+                                            
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- d3 JavaScript library-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!--  dashboard -->
+    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+
+    <title>myRisk</title>
+
+    <style type="text/css">
+        div.bar {
+            display: inline-block;
+            width: 20px;
+            height: 75px;   /* We'll override this later */
+            background-color: teal;
+            margin-right: 2px;
+        }
+        body {
+            background-color: #E5E5E5;
+        }
+        .profile-userpic img {
+            float: none;
+            margin: 0 auto;
+            width: 50%;
+            height: 50%;
+            -webkit-border-radius: 50% !important;
+            -moz-border-radius: 50% !important;
+            border-radius: 50% !important;
+        }
+        .profile-usertitle-name {
+            color: #5a7391;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 7px;
+            text-align: center;
+        }
+
+        .profile-usertitle-job {
+            text-transform: uppercase;
+            text-align: center;
+            color: #5b9bd1;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .profile-sidebar {
+            padding: 20px 0 10px 0;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+    ================================================== -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/vizDNA/">myRisk </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/vizDNA/">Home</a></li>
+                    <li><a href="/vizDNA/about">About</a></li>
+                    <li><a href="/vizDNA/contact">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/vizDNA/risk">Restart Your Risk Assessment</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <!-- Page header
+     ================================================== -->
+    <div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-2 main">
+        <div class="page-header">
+            <h1>Evaluation Questionnaire</h1>
+        </div>
+
+        <!-- Feedback Section -->
+        <div id="feedbackSection">
+            <div class="row">
+                <!-- Alignment -->
+                <div class=" col-lg-8">
+                    <!-- Form itself -->
+                    <form name="sentMessage" class="well" id="feedbackForm"  novalidate>
+
+                        <legend>1) On a scale of 1 – 5, please rate the ease of use of the tool:</legend>
+                        <div class="row">
+                            <div class="control-group">
+                                <div class="controls">
+                                    <p class="col-sm-2 help-block control-label">Rating:</p>
+                                    <div class="col-xs-3">
+                                        <select class="form-control col-sm-3" name="rating1" id="rating1">
+                                            <option>rate</option>
+                                            <option value="1">1 </option>
+                                            <option value="2">2 </option>
+                                            <option value="3">3 </option>
+                                            <option value="4">4 </option>
+                                            <option value="5">5 </option>
+                                        </select>
+                                    </div>
+                                    <p class="col-sm-3 help-block control-label">out of 5</p>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <legend>2) On a scale of 1 – 5, how well do you feel you understand your own personal risk?</legend>
+                        <div class="row">
+                            <div class="control-group">
+                                <div class="controls">
+                                    <p class="col-sm-2 help-block control-label">Rating:</p>
+                                    <div class="col-xs-3">
+                                        <select class="form-control col-sm-3" name="rating2" id="rating2">
+                                            <option>rate</option>
+                                            <option value="1">1 </option>
+                                            <option value="2">2 </option>
+                                            <option value="3">3 </option>
+                                            <option value="4">4 </option>
+                                            <option value="5">5 </option>
+                                        </select>
+                                    </div>
+                                    <p class="col-sm-3 help-block control-label">out of 5</p>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <legend>3) Which visualization did you feel best conveyed your risk of breast cancer?</legend>
+                        <div class="row">
+                            <div class="control-group">
+                                <div class="controls">
+                                    <p class="col-sm-2 help-block control-label">Visualization:</p>
+                                    <div class="col-xs-3">
+                                        <select class="form-control col-sm-3" name="rating3" id="rating3">
+                                            <option>diagram</option>
+                                            <option value="1">Speedometers </option>
+                                            <option value="2">Population Diagrams </option>
+                                            <option value="3">Timeline </option>
+                                            <option value="0">None</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <legend>4) Were you able to distinguish and understand the difference between your lifetime and 5-year risk estimates?</legend>
+                        <div class="row">
+                            <div class="control-group">
+                                <div class="controls">
+                                    <p class="col-sm-2 help-block control-label">Response:</p>
+                                    <div class="col-xs-3">
+                                        <select class="form-control col-sm-3" name="rating4" id="rating4">
+                                            <option>response</option>
+                                            <option value="0">Yes </option>
+                                            <option value="1">No </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <legend>5)Please feel encouraged to leave us any additional comments or concerns:</legend>
+                        <div class="control-group">
+                            <div class="controls">
+                                    <textarea rows="10" cols="100" class="form-control"
+                                              placeholder="Feedback" id="message" required
+                                              data-validation-required-message="Please enter feedback" minlength="0"
+                                              data-validation-minlength-message="Min 0 characters"
+                                              maxlength="999" style="resize:none"></textarea>
+                            </div>
+                            <p class="help-block"></p>
+                        </div>
+                        <br>
+
+                        <a href="/vizDNA/"><button type="submit" class="btn btn-primary btn-sm pull-right">Submit Review</button></a><br />
+                        <div id="success"> </div> <!-- For success/fail messages -->
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+    </div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- d3 JavaScript library-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+
+</body>
+</html>
+
+
+

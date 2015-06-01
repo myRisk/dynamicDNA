@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!--  dashboard -->
+    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    <title>myRisk</title>
+    <!-- d3 JavaScript library-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+
+    <style type="text/css">
+        div.bar {
+            display: inline-block;
+            width: 20px;
+            height: 75px;   /* We'll override this later */
+            background-color: teal;
+            margin-right: 2px;
+        }
+        body {
+            background-color: #E5E5E5;
+        }
+
+        #yourdiv {background: #3f3f4f;color:#ffffff;
+            width	: 100%;
+            height	: 300px;
+        }
+        #gendiv {background: #3f3f4f;color:#ffffff;
+            width	: 100%;
+            height	: 300px;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+<!-- Navbar
+================================================== -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/vizDNA/">myRisk </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/vizDNA/">Home</a></li>
+                <li><a href="/vizDNA/about">About</a></li>
+                <li><a href="/vizDNA/contact">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/vizDNA/risk">Restart Your Risk Assessment</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<!-- page header
+================================================== -->
+<!--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="page-header">
+  <h1>myRisk<small><br>Change is the only constat <strong>{{ boldmessage }}</strong></small></h1>
+</div>
+</div>-->
+
+<div class="col-sm-offset-1">
+
+</div>
+
+<script src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="http://www.amcharts.com/lib/3/gauge.js"></script>
+<script src="http://www.amcharts.com/lib/3/themes/dark.js"></script>
+
+<!-- Your Risk -->
+<div class="you">
+    <h1 class="col-sm-offset-1"><strong>Your Risk in the next 5 yrs</strong></h1>
+
+    <!-- Visual content from d3js.org
+    ================================================== -->
+
+    <div id="yourdiv">
+        <!-- Visual content from d3js.org
+        ================================================== -->
+        <script>
+            var gaugeChart1 = AmCharts.makeChart( "yourdiv", {
+                "type": "gauge",
+                "theme": "dark",
+                "path": "http://www.amcharts.com/lib/3/",
+                "axes": [ {
+                    "axisThickness": 1,
+                    "axisAlpha": 1,
+                    "tickAlpha": 5,
+                    "valueInterval": 1,
+                    "bands": [ {
+                        "color": "#84b761",
+                        "endValue": 1.5,
+                        "startValue": 0
+                    }, {
+                        "color": "#fdd400",
+                        "endValue": 5,
+                        "startValue": 1.5
+                    }, {
+                        "color": "#cc4748",
+                        "endValue": 10,
+                        "innerRadius": "95%",
+                        "startValue": 5
+                    } ],
+                    "bottomText": "0 percent",
+                    "bottomTextYOffset": -20,
+                    "endValue": 10
+                } ],
+                "arrows": [ {} ],
+                "export": {
+                    "enabled": true
+                }
+            } );
+
+            //sets risk value in gauge
+            function setRiskValue1(riskValue) {
+                var value = riskValue;
+                if ( gaugeChart1 ) {
+                    if ( gaugeChart1.arrows ) {
+                        if ( gaugeChart1.arrows[ 0 ] ) {
+                            if ( gaugeChart1.arrows[ 0 ].setValue ) {
+                                gaugeChart1.arrows[ 0 ].setValue( value );
+                            }
+                        }
+                    }
+                }
+            }
+
+            //sets risk value in gauge and displays risk
+            function setRiskValue1Set(riskValue) {
+                var value = riskValue;
+                if ( gaugeChart1 ) {
+                    if ( gaugeChart1.arrows ) {
+                        if ( gaugeChart1.arrows[ 0 ] ) {
+                            if ( gaugeChart1.arrows[ 0 ].setValue ) {
+                                gaugeChart1.arrows[ 0 ].setValue( value );
+                                gaugeChart1.axes[ 0 ].setBottomText( value + " percent" );
+                            }
+                        }
+                    }
+                }
+            }
+            //sets your risk value (fluctuates between riskValue-0.25 and riskValue+0.25)
+            function yourRisk(yourRiskValue) {
+                //var intervalFunctions = [riskLess, risk, riskMore, risk];
+                //var intervalIndex =0;
+                window.setInterval(function(){risk();}, 1000);
+
+                //function riskLess(){
+                //    setRiskValue1(yourRiskValue-0.25);
+                //};
+
+                function risk(){
+                    setRiskValue1Set(yourRiskValue);
+                };
+
+                //function riskMore(){
+                //    setRiskValue1(yourRiskValue+0.25);
+                //}
+            };
+
+            //Pass in "your risk" here
+            yourRisk({{ you }});
+
+        </script>
+    </div>
+</div>
+
+<!-- General Risk --->
+<div class="general">
+    <h1 class="col-sm-offset-1"><strong>Population Risk in the next 5 yrs</strong></h1>
+
+    <!-- Visual content from d3js.org
+    ================================================== -->
+
+    <div id="gendiv">
+        <!-- Visual content from d3js.org
+        ================================================== -->
+        <script>
+            var gaugeChart2 = AmCharts.makeChart( "gendiv", {
+                "type": "gauge",
+                "theme": "dark",
+                "path": "http://www.amcharts.com/lib/3/",
+                "axes": [ {
+                    "axisThickness": 1,
+                    "axisAlpha": 1,
+                    "tickAlpha": 5,
+                    "valueInterval": 1,
+                    "bands": [ {
+                        "color": "#84b761",
+                        "endValue": 1.5,
+                        "startValue": 0
+                    }, {
+                        "color": "#fdd400",
+                        "endValue": 5,
+                        "startValue": 1.5
+                    }, {
+                        "color": "#cc4748",
+                        "endValue": 10,
+                        "innerRadius": "95%",
+                        "startValue": 5
+                    } ],
+                    "bottomText": "0 percent",
+                    "bottomTextYOffset": -20,
+                    "endValue": 10
+                } ],
+                "arrows": [ {} ],
+                "export": {
+                    "enabled": true
+                }
+            } );
+
+            //sets risk value in gauge
+            function setRiskValue2(riskValue) {
+                var value = riskValue;
+                if ( gaugeChart2 ) {
+                    if ( gaugeChart2.arrows ) {
+                        if ( gaugeChart2.arrows[ 0 ] ) {
+                            if ( gaugeChart2.arrows[ 0 ].setValue ) {
+                                gaugeChart2.arrows[ 0 ].setValue( value );
+                            }
+                        }
+                    }
+                }
+            }
+
+            //sets risk value in gauge and displays risk
+            function setRiskValue2Set(riskValue) {
+                var value = riskValue;
+                if ( gaugeChart2 ) {
+                    if ( gaugeChart2.arrows ) {
+                        if ( gaugeChart2.arrows[ 0 ] ) {
+                            if ( gaugeChart2.arrows[ 0 ].setValue ) {
+                                gaugeChart2.arrows[ 0 ].setValue( value );
+                                gaugeChart2.axes[ 0 ].setBottomText( value + " percent" );
+                            }
+                        }
+                    }
+                }
+            }
+
+            //sets your risk value (fluctuates between riskValue-0.25 and riskValue+0.25)
+            function genRisk(genRiskValue) {
+                //var intervalFunctions = [riskLess, risk, riskMore, risk];
+                //var intervalIndex =0;
+                window.setInterval(function(){risk();}, 1000);
+
+                //function riskLess(){
+                //    setRiskValue2(genRiskValue-0.25);
+                //};
+
+                function risk(){
+                    setRiskValue2Set(genRiskValue);
+                };
+
+                //function riskMore(){
+                //    setRiskValue2(genRiskValue+0.25);
+                //}
+            };
+
+            //Pass in "general population risk" here
+            genRisk({{ pop }});
+
+        </script>
+    </div>
+</div>
+
+
+<div>
+    <a class="right carousel-control" href="/vizDNA/viz1" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="../../assets/js/vendor/holder.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>
+
+
