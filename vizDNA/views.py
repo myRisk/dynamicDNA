@@ -132,7 +132,6 @@ def viz1(request):
 
 def viz2(request):
     counselor_input = request.session['risk_data']
-   ###################################################################FIX
     results = get5YearRisk()
     results2 = getTerminalRisk()
 
